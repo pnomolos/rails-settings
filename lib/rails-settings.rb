@@ -1,3 +1,15 @@
+require 'rails-settings/railtie'
+
+
+
+
+
+module RailsSettings
+  load File.join(File.dirname(__FILE__), "rails-settings", "initializer.rb")
+  
+  require 'lib/rails-settings/scoped'
+end
+
 if defined?(Merb::Plugins)
 
   require "yaml"
