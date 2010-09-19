@@ -5,6 +5,7 @@ adapter_path = File.join( File.dirname(__FILE__), "rails-settings", "adapters")
 
 RS = RailsSettings
 RS.register_adapter :datamapper, "#{adapter_path}/datamapper" if defined?(DataMapper)
+
 module RailsSettings
   require 'yaml'
   require 'rails-settings/scoped'
