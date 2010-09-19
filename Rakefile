@@ -15,8 +15,6 @@ begin
     gem.add_dependency('yaml')
   end
   Jeweler::GemcutterTasks.new
-end
-
 rescue LoadError
   puts "Jeweler (or a dependency) not available. Install it with: sudo gem install jeweler"
 end
