@@ -12,7 +12,6 @@ begin
     gem.files = Dir['*','{lib}/**/*']
     gem.add_dependency('dm-timestamps', '>= 0.9.4')
     gem.add_dependency('dm-validations', '>= 0.9.4')
-    gem.add_dependency('yaml')
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
