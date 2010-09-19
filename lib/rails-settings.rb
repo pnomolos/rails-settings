@@ -21,6 +21,10 @@ module RailsSettings
     self.config[key] = value
   end
   
+  def self.config
+    @@config ||= {}
+  end
+  
   def self.run
     RS.load_adapter! :datamapper
   end
