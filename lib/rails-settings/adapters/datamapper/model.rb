@@ -7,7 +7,7 @@ module RailsSettings
         base.send(:include, ::DataMapper::Resource) unless ::DataMapper::Resource > base
 
         base.send(:include, Map)
-        base.send(:include, InstanceMethods )
+        base.send(:include, InstanceMethods)
         base.send(:include, Common)
 
         RS[:setting] = base

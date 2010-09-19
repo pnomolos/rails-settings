@@ -10,16 +10,16 @@ module RailsSettings
         type = self.class
         key = self.to_param
         if val
-          MS[:setting].setter(var,val, {:type => type, :key => key})
+          RS[:setting].setter(var,val, {:type => type, :key => key})
         else
-          MS[:setting].getter({:name => var,:type => type, :key => key})
+          RS[:setting].getter({:name => var,:type => type, :key => key})
         end
       end
 
       def settings
         type = self.class
         key = self.to_param
-        MS[:setting].getter({:type => type, :key => key})
+        RS[:setting].getter({:type => type, :key => key})
       end
     end
 

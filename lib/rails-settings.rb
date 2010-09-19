@@ -8,6 +8,19 @@ RS.register_adapter :datamapper, "#{adapter_path}/datamapper" if defined?(DataMa
 module RailsSettings
   require 'yaml'
   require 'rails-settings/scoped'
+  
+  # @param <Symbol> The configuration key.
+  # @return <Object> The configuration value.
+  def [](key)
+    self.config[key]
+  end
+
+  # @param <Symbol> The configuration key.
+  # @param <Object> The configuration value.
+  def []=(key, value)
+    self.config[key] = value
+  end
+  
   def self.run
     RS.load_adapter! :datamapper
   end
