@@ -30,7 +30,8 @@ Gem::Specification.new do |s|
      "lib/rails-settings/adapters/datamapper/model.rb",
      "lib/rails-settings/initializer.rb",
      "lib/rails-settings/railtie.rb",
-     "lib/rails-settings/scoped.rb"
+     "lib/rails-settings/scoped.rb",
+     "rails-settings.gemspec"
   ]
   s.homepage = %q{http://github.com/pnomolos/rails-settings}
   s.rdoc_options = ["--charset=UTF-8"]
@@ -45,16 +46,13 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<dm-timestamps>, [">= 0.9.4"])
       s.add_runtime_dependency(%q<dm-validations>, [">= 0.9.4"])
-      s.add_runtime_dependency(%q<yaml>, [">= 0"])
     else
       s.add_dependency(%q<dm-timestamps>, [">= 0.9.4"])
       s.add_dependency(%q<dm-validations>, [">= 0.9.4"])
-      s.add_dependency(%q<yaml>, [">= 0"])
     end
   else
     s.add_dependency(%q<dm-timestamps>, [">= 0.9.4"])
     s.add_dependency(%q<dm-validations>, [">= 0.9.4"])
-    s.add_dependency(%q<yaml>, [">= 0"])
   end
 end
 
