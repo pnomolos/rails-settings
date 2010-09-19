@@ -22,16 +22,16 @@ module RailsSettings
   # @param [Symbol | String] adapter The name of the adapter to load.  This must be registered
   # @raise [RuntimeError] Raises an error if the adapter is not registered.
   def self.load_adapter!(adapter = nil)
-    adapter ||= self.config[:adapter] || Merb.orm
+    # adapter ||= Rails.orm
     raise "RailsSettings: No Adapter Specified" if adapter.nil? || adapter.blank?
 
     # Check that the adapter is registered
     raise "RailsSettings: Adapter Not Registered - #{adapter}" unless adapters.keys.include?(adapter.to_sym)
 
-    if Rails.env?(:test)
-      load adapters[adapter.to_sym][:path] / "init.rb"
+    if Rails.env == 'test'
+      load File.join(adapters[adapter.to_sym][:path], "init.rb")
     else
-      require adapters[adapter.to_sym][:path] / "init"
+      require File.join(adapters[adapter.to_sym][:path], "init")
     end
   end
 end

@@ -3,7 +3,7 @@ require 'dm-timestamps'
 
 path = File.dirname(__FILE__)
 
-if Rails.env?(:test)
+if Rails.env == 'test'
   # Need to make sure the class is removed when testing
   # It should not impact a normal apps tests
   if RS[:setting]
@@ -16,13 +16,13 @@ if Rails.env?(:test)
   RaiseSettings.module_eval do
     remove_const("Adapter") if defined?(Adapter)
   end
-  load path / ".." / "common.rb"
-  load path / "map.rb"
-  load path / "model.rb"
+  load File.join(path, "..", "common.rb")
+  load File.join(path, "map.rb")
+  load File.join(path, "model.rb")
 
 else
-  require path / ".." / "common"
-  require path / "map"
-  require path / "model"
+  require File.join(path, "..", "common")
+  require File.join(path, "map")
+  require File.join(path, "model")
 end
 
