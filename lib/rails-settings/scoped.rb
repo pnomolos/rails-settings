@@ -1,4 +1,4 @@
-module MerbSettings
+module RailsSettings
   module ScopedHelpers
 
     def self.included(base)

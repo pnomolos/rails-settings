@@ -1,4 +1,4 @@
-module MerbSettings
+module RailsSettings
 
   # Clears the currently registered adapter list.  
   def self.clear_adapter_list!
@@ -23,12 +23,12 @@ module MerbSettings
   # @raise [RuntimeError] Raises an error if the adapter is not registered.
   def self.load_adapter!(adapter = nil)
     adapter ||= self.config[:adapter] || Merb.orm
-    raise "MerbSettings: No Adapter Specified" if adapter.nil? || adapter.blank?
+    raise "RailsSettings: No Adapter Specified" if adapter.nil? || adapter.blank?
 
     # Check that the adapter is registered
-    raise "MerbSettings: Adapter Not Registered - #{adapter}" unless adapters.keys.include?(adapter.to_sym)
+    raise "RailsSettings: Adapter Not Registered - #{adapter}" unless adapters.keys.include?(adapter.to_sym)
 
-    if Merb.env?(:test)
+    if Rails.env?(:test)
       load adapters[adapter.to_sym][:path] / "init.rb"
     else
       require adapters[adapter.to_sym][:path] / "init"

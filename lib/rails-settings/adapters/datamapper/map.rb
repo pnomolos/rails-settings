@@ -1,4 +1,4 @@
-module MerbSettings
+module RailsSettings
   module Adapter
     module DataMapper
       module Map
