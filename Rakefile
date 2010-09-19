@@ -1,29 +1,22 @@
 require 'rubygems'
 require 'rake'
-require 'rake/gempackagetask'
 
-NAME = "rails-settings"
-AUTHOR = "Felix McCoey, Philip Schalm"
-EMAIL = "pnomolos@gmail.com"
-HOMEPAGE = ""
-SUMMARY = "RailsSettings, settings for your Rails"
-GEM_VERSION = "0.0.1"
-
-spec = nil
-File.open('rails-settings.gemspec', 'r'){|f| spec = eval(f.read)}
-
-Rake::GemPackageTask.new(spec) do |pkg|
-  pkg.gem_spec = spec
-end
-
-desc "Install RailsSettings as a gem"
-task :install => [:package] do
-  sh %{#{sudo} gem install pkg/#{NAME}-#{GEM_VERSION} --no-update-sources}
-end
-
-namespace :jruby do
-  desc "Run :package and install the resulting .gem with jruby"
-  task :install => :package do
-    sh %{#{sudo} jruby -S gem install #{install_home} pkg/#{NAME}-#{GEM_VERSION}.gem --no-rdoc --no-ri}
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gem|
+    gem.name = 'rails-settings'
+    gem.summary = 'A nice little settings plugin for Rails'
+    gem.email = 'pnomolos@gmail.com'
+    gem.homepage = 'http://github.com/pnomolos/rails-settings'
+    gem.authors = ['Philip Schalm', 'Felix McCoey']
+    gem.files = Dir['*','{lib}/**/*']
+    gem.add_dependency('dm-timestamps', '>= 0.9.4')
+    gem.add_dependency('dm-validations', '>= 0.9.4')
+    gem.add_dependency('yaml')
   end
+  Jeweler::GemcutterTasks.new
+end
+
+rescue LoadError
+  puts "Jeweler (or a dependency) not available. Install it with: sudo gem install jeweler"
 end
