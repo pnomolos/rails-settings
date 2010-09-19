@@ -1,11 +1,13 @@
-MerbSettings
+RailsSettings
 ============
+
+Right now this is only working for datamapper.  I will try to port to ActiveRecord shortly
 
 Enable settings for your app or models
 
 Add the slice as a regular dependency
 
-dependency 'merb-settings'
+dependency 'rails-settings'
 
 Create a model that will hold all settings. Include the following as a
 basis. No other includes are necessary.
@@ -27,7 +29,7 @@ To have settings that are scoped to a model include the following alongside
 all your other model code:
 
 class User
-  include MerbSettings::ScopedMethods
+  include RailsSettings::ScopedMethods
 
   property :foo, ....
 
@@ -38,17 +40,6 @@ end
 Notice that you can also set defaults for some settings so that if they are
 called upon before they are set then you will get the default (this actually
 is not working yet :-) )
-
-Other options:
-
-You can set up global defaults in the before_app_loads callback
-
-Merb::BootLoader.before_app_loads do
-  
-  Merb::Slices::config[:merb_settings][:foo] = 'test'
-  Merb::Slices::config[:merb_settings][:bar] = 9
-  
-end
 
 ------------------------------------------------------------------------------
 
