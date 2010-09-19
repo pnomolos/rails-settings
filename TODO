@@ -1,0 +1,10 @@
+TODO:
+
+- Add 'method_missing' settings to the scoped methods, maybe
+  so ..
+  u = User.first
+  u.foo = 'test'
+  u.foo #=> 'test
+  
+- Add tests
+- Add some more tests

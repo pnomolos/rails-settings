@@ -1,0 +1,55 @@
+MerbSettings
+============
+
+Enable settings for your app or models
+
+Add the slice as a regular dependency
+
+dependency 'merb-settings'
+
+Create a model that will hold all settings. Include the following as a
+basis. No other includes are necessary.
+
+class Setting
+  include MerbSettings::Adapter::DataMapper
+  include MerbSettings::Adapter::DataMapper::DefaultModelSetup
+end
+
+This then enables you to do the following:
+
+Setting.foo = "test"
+Setting.bar = 9
+Setting.foo #=> "test"
+Setting.foo = 9
+Setting.foo #=> 9
+
+To have settings that are scoped to a model include the following alongside
+all your other model code:
+
+class User
+  include MerbSettings::ScopedMethods
+
+  property :foo, ....
+
+  setting :foo, 'text'
+  setting :bar, 12
+end
+
+Notice that you can also set defaults for some settings so that if they are
+called upon before they are set then you will get the default (this actually
+is not working yet :-) )
+
+Other options:
+
+You can set up global defaults in the before_app_loads callback
+
+Merb::BootLoader.before_app_loads do
+  
+  Merb::Slices::config[:merb_settings][:foo] = 'test'
+  Merb::Slices::config[:merb_settings][:bar] = 9
+  
+end
+
+------------------------------------------------------------------------------
+
+
