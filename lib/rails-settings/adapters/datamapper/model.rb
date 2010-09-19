@@ -10,7 +10,7 @@ module RailsSettings
         base.send(:include, InstanceMethods )
         base.send(:include, Common)
 
-        MS[:setting] = base
+        RS[:setting] = base
       end
 
       module InstanceMethods
